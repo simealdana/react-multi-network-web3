@@ -12,6 +12,44 @@ body,
   display: grid;
 }
 
+.select-network-container{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 10px 20px;
+  align-items: center;
+}
+.main-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 20px;
+}
+
+.tezos-container{
+  border: solid;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.metamask-container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: solid;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.tezos-buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 20px;
+}
+
 .main-box {
   margin: auto;
 }
