@@ -15,15 +15,21 @@ type ButtonProps = {
   setBeaconConnection: Dispatch<SetStateAction<boolean>>;
   setPublicToken: Dispatch<SetStateAction<string | null>>;
   wallet: BeaconWallet;
+  contractAddress: string;
+  setContract: Dispatch<SetStateAction<any>>;
+  setStorage: Dispatch<SetStateAction<number>>;
 };
 
 const ConnectButton = ({
   Tezos,
+  contractAddress,
   setWallet,
   setUserAddress,
   setUserBalance,
   setBeaconConnection,
   setPublicToken,
+  setContract,
+  setStorage,
   wallet,
 }: ButtonProps): JSX.Element => {
   const setup = async (userAddress: string): Promise<void> => {
@@ -31,6 +37,10 @@ const ConnectButton = ({
     // updates balance
     const balance = await Tezos.tz.getBalance(userAddress);
     setUserBalance(balance.toNumber());
+    const contract = await Tezos.wallet.at(contractAddress);
+    const storage: any = await contract.storage();
+    setContract(contract);
+    setStorage(storage.toNumber());
   };
 
   const connectWallet = async (): Promise<void> => {
